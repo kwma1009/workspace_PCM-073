@@ -107,7 +107,7 @@ outputs:
 - {id: FLEXIO2_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: FLEXSPI1_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: FLEXSPI2_CLK_ROOT.outFreq, value: 24 MHz}
-- {id: GC355_CLK_ROOT.outFreq, value: 492.0000125 MHz}
+- {id: GC355_CLK_ROOT.outFreq, value: 480 MHz}
 - {id: GPT1_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: GPT1_ipg_clk_highfreq.outFreq, value: 24 MHz}
 - {id: GPT2_CLK_ROOT.outFreq, value: 24 MHz}
@@ -161,7 +161,7 @@ outputs:
 - {id: OSC_RC_400M.outFreq, value: 400 MHz}
 - {id: OSC_RC_48M.outFreq, value: 48 MHz}
 - {id: OSC_RC_48M_DIV2.outFreq, value: 24 MHz}
-- {id: PLL_VIDEO_CLK.outFreq, value: 984.000025 MHz}
+- {id: PLL_VIDEO_CLK.outFreq, value: 960 MHz}
 - {id: SAI1_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: SAI1_MCLK1.outFreq, value: 24 MHz}
 - {id: SAI1_MCLK3.outFreq, value: 24 MHz}
@@ -173,11 +173,11 @@ outputs:
 - {id: SAI3_MCLK3.outFreq, value: 24 MHz}
 - {id: SAI4_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: SAI4_MCLK1.outFreq, value: 24 MHz}
-- {id: SEMC_CLK_ROOT.outFreq, value: 198 MHz}
+- {id: SEMC_CLK_ROOT.outFreq, value: 3168/19 MHz, locked: true, accuracy: '0.001'}
 - {id: SPDIF_CLK_ROOT.outFreq, value: 24 MHz}
 - {id: SYS_PLL2_CLK.outFreq, value: 528 MHz}
 - {id: SYS_PLL2_PFD0_CLK.outFreq, value: 352 MHz}
-- {id: SYS_PLL2_PFD1_CLK.outFreq, value: 594 MHz}
+- {id: SYS_PLL2_PFD1_CLK.outFreq, value: 9504/19 MHz}
 - {id: SYS_PLL2_PFD2_CLK.outFreq, value: 396 MHz}
 - {id: SYS_PLL2_PFD3_CLK.outFreq, value: 297 MHz}
 - {id: SYS_PLL3_CLK.outFreq, value: 480 MHz}
@@ -194,14 +194,16 @@ settings:
 - {id: ANADIG_OSC_OSC_24M_CTRL_LP_EN_CFG, value: Low}
 - {id: ANADIG_OSC_OSC_24M_CTRL_OSC_EN_CFG, value: Enabled}
 - {id: ANADIG_PLL.PLL_AUDIO_BYPASS.sel, value: ANADIG_OSC.OSC_24M}
-- {id: ANADIG_PLL.PLL_VIDEO.denom, value: '960000'}
-- {id: ANADIG_PLL.PLL_VIDEO.div, value: '41'}
-- {id: ANADIG_PLL.PLL_VIDEO.num, value: '1'}
+- {id: ANADIG_PLL.PLL_VIDEO.denom, value: '1'}
+- {id: ANADIG_PLL.PLL_VIDEO.div, value: '40'}
+- {id: ANADIG_PLL.PLL_VIDEO.num, value: '0'}
+- {id: ANADIG_PLL.PLL_VIDEO_SS_DIV.scale, value: '1'}
 - {id: ANADIG_PLL.SYS_PLL1_BYPASS.sel, value: ANADIG_OSC.OSC_24M}
-- {id: ANADIG_PLL.SYS_PLL2.denom, value: '268435455'}
+- {id: ANADIG_PLL.SYS_PLL2.denom, value: '1'}
 - {id: ANADIG_PLL.SYS_PLL2.div, value: '22'}
 - {id: ANADIG_PLL.SYS_PLL2.num, value: '0'}
-- {id: ANADIG_PLL.SYS_PLL2_SS_DIV.scale, value: '268435455'}
+- {id: ANADIG_PLL.SYS_PLL2_PFD1_DIV.scale, value: '19'}
+- {id: ANADIG_PLL.SYS_PLL2_SS_DIV.scale, value: '1'}
 - {id: ANADIG_PLL.SYS_PLL3_PFD3_DIV.scale, value: '22', locked: true}
 - {id: ANADIG_PLL.SYS_PLL3_PFD3_MUL.scale, value: '18', locked: true}
 - {id: ANADIG_PLL_ARM_PLL_CTRL_POWERUP_CFG, value: Enabled}
@@ -253,17 +255,17 @@ const clock_arm_pll_config_t armPllConfig_BOARD_BootClockRUN =
 
 const clock_sys_pll2_config_t sysPll2Config_BOARD_BootClockRUN =
     {
-        .mfd = 268435455,                         /* Denominator of spread spectrum */
+        .mfd = 1,                                 /* Denominator of spread spectrum */
         .ss = NULL,                               /* Spread spectrum parameter */
         .ssEnable = false,                        /* Enable spread spectrum or not */
     };
 
 const clock_video_pll_config_t videoPllConfig_BOARD_BootClockRUN =
     {
-        .loopDivider = 41,                        /* PLL Loop divider, valid range for DIV_SELECT divider value: 27 ~ 54. */
+        .loopDivider = 40,                        /* PLL Loop divider, valid range for DIV_SELECT divider value: 27 ~ 54. */
         .postDivider = 0,                         /* Divider after PLL, should only be 1, 2, 4, 8, 16, 32 */
-        .numerator = 1,                           /* 30 bit numerator of fractional loop divider, Fout = Fin * ( loopDivider + numerator / denominator ) */
-        .denominator = 960000,                    /* 30 bit denominator of fractional loop divider, Fout = Fin * ( loopDivider + numerator / denominator ) */
+        .numerator = 0,                           /* 30 bit numerator of fractional loop divider, Fout = Fin * ( loopDivider + numerator / denominator ) */
+        .denominator = 1,                         /* 30 bit denominator of fractional loop divider, Fout = Fin * ( loopDivider + numerator / denominator ) */
         .ss = NULL,                               /* Spread spectrum parameter */
         .ssEnable = false,                        /* Enable spread spectrum or not */
     };
@@ -387,7 +389,7 @@ void BOARD_BootClockRUN(void)
     CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd0, 27);
 
     /* Init System Pll2 pfd1. */
-    CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd1, 16);
+    CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd1, 19);
 
     /* Init System Pll2 pfd2. */
     CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd2, 24);
