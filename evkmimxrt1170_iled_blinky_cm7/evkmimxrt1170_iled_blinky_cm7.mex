@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8" ?>
-<configuration name="MIMXRT1176xxxxx" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_12 http://mcuxpresso.nxp.com/XSD/mex_configuration_12.xsd" uuid="0f2b30f6-d824-449d-9673-c947883e9f64" version="12" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<configuration name="MIMXRT1176xxxxx" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_12 http://mcuxpresso.nxp.com/XSD/mex_configuration_12.xsd" uuid="26785f32-8367-4c2a-8ae4-d78f3f4e13c6" version="12" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <common>
       <processor>MIMXRT1176xxxxx</processor>
       <package>MIMXRT1176DVMAA</package>
@@ -20,10 +20,6 @@
    </preferences>
    <tools>
       <pins name="Pins" version="12.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/pin_mux.c" update_enabled="true"/>
-            <file path="board/pin_mux.h" update_enabled="true"/>
-         </generated_project_files>
          <pins_profile>
             <processor_version>12.0.0</processor_version>
             <pin_labels>
@@ -88,10 +84,6 @@
          </functions_list>
       </pins>
       <clocks name="Clocks" version="10.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/clock_config.c" update_enabled="true"/>
-            <file path="board/clock_config.h" update_enabled="true"/>
-         </generated_project_files>
          <clocks_profile>
             <processor_version>12.0.0</processor_version>
          </clocks_profile>
@@ -359,10 +351,6 @@
          </clock_configurations>
       </clocks>
       <dcdx name="DCDx" version="3.0" enabled="true" update_project_code="true">
-         <generated_project_files>
-            <file path="board/dcd.c" update_enabled="true"/>
-            <file path="board/dcd.h" update_enabled="true"/>
-         </generated_project_files>
          <dcdx_profile>
             <processor_version>12.0.0</processor_version>
             <output_format>c_array</output_format>
@@ -491,14 +479,14 @@
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_B2_15" value="0x08" value_width="4"/>
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_B2_16" value="0x08" value_width="4"/>
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_B2_17" value="0x08" value_width="4"/>
-                        <command type="write_value" address="SEMC_MCR" value="0x10000004" value_width="4"/>
-                        <command type="write_value" address="SEMC_BMCR0" value="0x81" value_width="4"/>
-                        <command type="write_value" address="SEMC_BMCR1" value="0x81" value_width="4"/>
+                        <command type="write_value" address="SEMC_MCR" value="536805380" value_width="4"/>
+                        <command type="write_value" address="SEMC_BMCR0" value="1065093" value_width="4"/>
+                        <command type="write_value" address="SEMC_BMCR1" value="1080042629" value_width="4"/>
                         <command type="write_value" address="SEMC_BR0" value="0x8000001D" value_width="4"/>
-                        <command type="write_value" address="SEMC_SDRAMCR0" value="0xF32" value_width="4"/>
-                        <command type="write_value" address="SEMC_SDRAMCR1" value="0x772A22" value_width="4"/>
-                        <command type="write_value" address="SEMC_SDRAMCR2" value="0x10A0D" value_width="4"/>
-                        <command type="write_value" address="SEMC_SDRAMCR3" value="0x21210408" value_width="4"/>
+                        <command type="write_value" address="SEMC_SDRAMCR0" value="3890" value_width="4"/>
+                        <command type="write_value" address="SEMC_SDRAMCR1" value="6695714" value_width="4"/>
+                        <command type="write_value" address="SEMC_SDRAMCR2" value="133387" value_width="4"/>
+                        <command type="write_value" address="SEMC_SDRAMCR3" value="151521793" value_width="4"/>
                         <command type="write_value" address="SEMC_IPCR0" value="0x80000000" value_width="4"/>
                         <command type="write_value" address="SEMC_IPCR1" value="0x02" value_width="4"/>
                         <command type="write_value" address="SEMC_IPCR2" value="0x00" value_width="4"/>
@@ -539,7 +527,6 @@
          </dcdx_configurations>
       </dcdx>
       <periphs name="Peripherals" version="11.0" enabled="false" update_project_code="true">
-         <generated_project_files/>
          <peripherals_profile>
             <processor_version>N/A</processor_version>
          </peripherals_profile>
@@ -547,7 +534,6 @@
          <components/>
       </periphs>
       <tee name="TEE" version="4.0" enabled="false" update_project_code="true">
-         <generated_project_files/>
          <tee_profile>
             <processor_version>N/A</processor_version>
          </tee_profile>

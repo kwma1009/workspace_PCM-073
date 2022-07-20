@@ -1,4 +1,4 @@
-/*
+/*c
  * Copyright 2017-2020 NXP
  * All rights reserved.
  *
@@ -115,16 +115,16 @@ status_t BOARD_InitSEMC(void)
     sdramconfig.burstLen            = kSEMC_Sdram_BurstLen8;
     sdramconfig.columnAddrBitNum    = kSEMC_SdramColunm_9bit;
     sdramconfig.casLatency          = kSEMC_LatencyThree;
-    sdramconfig.tPrecharge2Act_Ns   = 15; /* tRP 15ns */
-    sdramconfig.tAct2ReadWrite_Ns   = 15; /* tRCD 15ns */
+    sdramconfig.tPrecharge2Act_Ns   = 18; /* tRP 15ns */
+    sdramconfig.tAct2ReadWrite_Ns   = 18; /* tRCD 15ns */
     sdramconfig.tRefreshRecovery_Ns = 70; /* Use the maximum of the (Trfc , Txsr). */
-    sdramconfig.tWriteRecovery_Ns   = 2;  /* tWR 2ns */
+    sdramconfig.tWriteRecovery_Ns   = 12;  /* tWR 12ns */
     sdramconfig.tCkeOff_Ns =
         42; /* The minimum cycle of SDRAM CLK off state. CKE is off in self refresh at a minimum period tRAS.*/
-    sdramconfig.tAct2Prechage_Ns       = 40; /* tRAS 40ns */
+    sdramconfig.tAct2Prechage_Ns       = 42; /* tRAS 42ns */
     sdramconfig.tSelfRefRecovery_Ns    = 70;
     sdramconfig.tRefresh2Refresh_Ns    = 60;
-    sdramconfig.tAct2Act_Ns            = 2; /* tRC/tRDD 2ns */
+    sdramconfig.tAct2Act_Ns            = 18; /* tRC/tRDD 18ns */
     sdramconfig.tPrescalePeriod_Ns     = 160 * (1000000000 / clockFrq);
     sdramconfig.refreshPeriod_nsPerRow = 64 * 1000000 / 8192; /* 64ms/8192 */
     sdramconfig.refreshUrgThreshold    = sdramconfig.refreshPeriod_nsPerRow;
